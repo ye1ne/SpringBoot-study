@@ -8,11 +8,11 @@ import java.util.*;
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new HashMap<>();
-    private static long sequence = 0L;
+    private static long sequence = 0L; //시퀀스 값을 저장후
 
     @Override
     public Member save(Member member) {
-        member.setId(++sequence);
+        member.setId(++sequence); //셋팅해줌 이걸하려면 DB에서 스퀀스값이 뭔지 가져오는걸 해야함
         store.put(member.getId(),member);
         return member;
     }

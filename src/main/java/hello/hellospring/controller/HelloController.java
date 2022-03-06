@@ -15,14 +15,16 @@ public class HelloController {
         //찾아 랜더링 후 타임리프 템플릿 엔진이 처리하는것, 이렇게 동작하도록 스프링 부트가 셋팅해줌
     }
     @GetMapping("hello-mvc")
+    //외부에서 파라미터를 받음
     public String helloMvs(@RequestParam("name") String name, Model model){
-        model.addAttribute("name",name);
-        return "hello-template";
+        model.addAttribute("name",name); //key와 name
+        return "hello-template";  //hello-template로 넘김
     }
     @GetMapping("hello-string")
-    @ResponseBody
+    @ResponseBody //http에서 바디부에 이 데이터를 직접 넣어주겠다는 의미이다.
     public String helloString(@RequestParam("name")String name){
-        return "hello" + name;
+        return "hello" + name; //스프링이라고 네임을 넣으면 hello spring으로 바뀔것
+        //이친구는 html 친구가 하나도 없이 그저 string을 넣어준다.
     }
 
     @GetMapping("hello-api")
